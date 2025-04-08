@@ -1,0 +1,7 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="60" r="50" fill="#FFD93B" stroke="#F4C534" stroke-width="4"/>
+  <!-- Sleepy eyes -->
+  <path d="M34 50 Q40 45 46 50" stroke="#3E4347" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M74 50 Q80 45 86 50" stroke="#3E4347" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M45 80 Q60 85 75 80" stroke="#3E4347" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

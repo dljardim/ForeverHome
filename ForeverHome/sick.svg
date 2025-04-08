@@ -1,0 +1,11 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="60" r="50" fill="#A3F7B5" stroke="#62C370" stroke-width="4"/>
+  <!-- Sick eyes -->
+  <line x1="36" y1="45" x2="44" y2="53" stroke="#3E4347" stroke-width="4"/>
+  <line x1="44" y1="45" x2="36" y2="53" stroke="#3E4347" stroke-width="4"/>
+  <line x1="76" y1="45" x2="84" y2="53" stroke="#3E4347" stroke-width="4"/>
+  <line x1="84" y1="45" x2="76" y2="53" stroke="#3E4347" stroke-width="4"/>
+  <!-- Vomit -->
+  <path d="M55 70 Q60 90 65 70" fill="#76C893"/>
+  <rect x="57" y="70" width="6" height="20" fill="#76C893"/>
+</svg>

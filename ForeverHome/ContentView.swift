@@ -8,14 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var count: Int = 0
+    
+    func increase() {
+        count += 1
+    }
+    
+    enum Person{
+        case starving
+        case hungry
+        case happy
+        case full
+        case sick
+        case throwup
+    }
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(spacing: 20) {
+            Text("Count: \(count)")
+                .font(.custom("AmericanTypewriter", size: 40, relativeTo: .largeTitle))
+            Button {
+                increase()
+            } label: {
+                Text("Feed Pet 🍗")
+                    .padding()
+                    .font(.custom("AmericanTypewriter", size: 40, relativeTo: .largeTitle))
+
+            }
+            .buttonStyle(.borderedProminent)
         }
-        .padding()
     }
 }
 

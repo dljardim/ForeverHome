@@ -8,35 +8,52 @@
 import SwiftUI
 
 struct AnimationEx: View {
-    @State private var isBig = false
-
-    var body: some View {
-        Button{
-            isBig.toggle()
-        }label:{
-            Text("\(isBig ? "Big" : "Small")")
-                .frame(width: isBig ? 200 : 100, height: isBig ? 200 : 100)
-                .background(Color.red)
-                .foregroundColor(.white)
-                .clipShape(Circle())
-        }
-        
-    }
-}
-
-struct MagicButtonView: View {
-    @State private var isBig = false
+    @State private var selectedIndex:Int = 0
     
-    var body: some View {
-        Button("Tap Me!") {
-            isBig.toggle()
+    // 1. create state variable that holds the selected index
+    // 2. Add TabView as the outer most structure of the View
+    // 3. Add a navigation stack within each tabView
+    var body: some View{
+        TabView(selection: $selectedIndex){
+            // tab 0
+            NavigationStack(){
+                // detail view on click
+                MagicButtonViewSolution()
+                    .navigationTitle("Home")
+            }.tabItem{
+                Text("Home View")
+                Image(systemName: "house.fill")
+                    .renderingMode(.template)
+            }.tag(0)
+            
+            // tab 1
+            NavigationStack(){
+                // detail view on click
+                MagicButtonViewSolution2()
+                    .navigationTitle("Animation")
+            }.tabItem{
+                Text("Animations")
+                Image(systemName: "figure.run.circle.fill")
+                    .renderingMode(.template)
+            }.tag(0)
+            
+            // tab 1
+            NavigationStack(){
+                // detail view on click
+                RotationAnimationView()
+                SpringAnimation()
+                CustomTiming()
+                MultiplePropertiesAnimationView()
+                    .navigationTitle("About")
+            }.tabItem{
+                Text("Questions")
+                Image(systemName: "questionmark.app.fill")
+                    .renderingMode(.template)
+            }.tag(0)
         }
-        .frame(width: isBig ? 200 : 100, height: isBig ? 200 : 100)
-        .background(Color.red)
-        .foregroundColor(.white)
-        .clipShape(Circle())
     }
 }
+
 
 
 struct MagicButtonViewSolution: View {
@@ -267,6 +284,55 @@ struct MultiplePropertiesAnimationView: View {
     }
 }
 
+struct RepeatingAnimation: View {
+    @State private var scale: CGFloat = 1.0
+    var body : some View {
+        VStack{
+            Circle()
+                .fill(Color.orange)
+                .frame(width: 100, height: 100)
+                .scaleEffect(scale)
+                .onAppear {
+                    let baseAnimation = Animation.easeInOut(duration: 1.0)
+                    let repeated = baseAnimation.repeatForever(autoreverses: true)
+                    withAnimation(repeated) {
+                        scale = 1.5
+                    }
+                }
+        }.navigationTitle("RepeatingAnimation")
+    }
+}
+
+struct PhaseAnimatorsView: View {
+    
+    enum Phase: CaseIterable{
+        case phase1
+        case phase2
+        case phase3
+        case phase4
+    }
+    
+    var body: some View {
+        VStack(spacing: 50){
+            PhaseAnimator([0,1,3]){value in
+                Text("Hello")
+                    .font(.largeTitle)
+                    .scaleEffect(value)
+                    .opacity(value == 1 ? 1 : 0)
+            }
+            
+            PhaseAnimator([3,1,0]){value in
+                Text("Good Bye")
+                    .font(.largeTitle)
+                    .scaleEffect(value)
+                    .opacity(value == 1 ? 1 : 0)
+            }
+        }
+    }
+    
+    
+}
+
 
 #Preview {
 //    MagicButtonViewSolution()
@@ -275,9 +341,13 @@ struct MultiplePropertiesAnimationView: View {
 
 //    AnimationEx2()
 //    FlyingCatsView()
-    RotationAnimationView()
-    SpringAnimation()
-    CustomTiming()
-    MultiplePropertiesAnimationView()
+    
+//    RepeatingAnimation()
+    PhaseAnimatorsView()
+    
+    // tab view
+//    AnimationEx()
+    
+
 
 }

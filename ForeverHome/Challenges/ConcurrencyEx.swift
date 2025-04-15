@@ -66,20 +66,64 @@ struct ConcurrencyEx: View {
     
     @State private var statusMessage = "Waiting..."
     
+    // change the body to use Task and Task.sleep instead
+    //  DispatchQueue.global().async and DispatchQueue.main.async
+    
+//    var body: some View {
+//        Text("status: \(statusMessage)")
+//        Button("makePizza"){
+//            
+//            // dont make updates to the UI from a background thread
+//            DispatchQueue.global().async{
+//                statusMessage = "🍕 Starting pizza..."
+//                sleep(5)
+//                statusMessage = "✅ Pizza ready!"
+//                
+//                // update UI from within a background thread
+//                DispatchQueue.main.async{
+//                    statusMessage = "✅ Pizza ready!"
+//
+//                }
+//            }
+//
+//
+//        }.buttonStyle(.borderedProminent)
+//    }
+    
     
     var body: some View {
         Text("status: \(statusMessage)")
         Button("makePizza"){
-            DispatchQueue.global().async{
-                statusMessage = "🍕 Starting pizza..."
-                sleep(5)
+            Task{
+                statusMessage = "🍕 Starting pizaza..."
+                
                 statusMessage = "✅ Pizza ready!"
             }
-
-
+  
         }.buttonStyle(.borderedProminent)
     }
 }
+
+struct TaskExampleView: View {
+    
+    enum StatusMessage{
+        case waiting, running, complete
+        
+    }
+    @State private var displayMessage = "Waiting..."
+
+    
+    var body: some View{
+        Text("TaskExampleView")
+        Text("status: \(displayMessage)")
+        Button("Run"){
+            
+        }
+    }
+}
+
+
+
 
 
 

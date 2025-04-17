@@ -142,7 +142,7 @@ struct ColorPickerView1: View {
             .background(Color.clear)
             .scrollContentBackground(.hidden)
             
-            ColorGrid()
+//            ColorGrid()
             
             VStack{
                 Spacer()
@@ -190,22 +190,28 @@ struct ColorGrid : View {
     }
 }
 
-struct quicktest : View {
-    var body: some View {
-        VStack{
-        }
-        .frame(maxWidth:.infinity, maxHeight: .infinity)
-        .background{
-            Color(hex: "#181818").opacity(0.3).ignoresSafeArea()
-        }
-    }
-}
+/*
+ 
+ challenge - convert VStack to LazyVGrid with 3 columns using the same data
+ 
+ VStack {
+ ForEach(items, id: \.self) { item in
+ Text(item)
+ .padding()
+ .background(Color.green)
+ }
+ }
+ */
+
+
+
 
 #Preview {
     //    ColorPickerEx()
     //    DrawingSettingsView()
     //    DrawingSettingsViewSolution()
     //        ColorPickerView1().preferredColorScheme(.dark)
-    ColorPickerView1().preferredColorScheme(.dark)
+//    ColorPickerView1().preferredColorScheme(.dark)
+    ConvertToLazyVGrid()
     
 }

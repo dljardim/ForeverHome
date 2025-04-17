@@ -12,6 +12,10 @@ struct ForeverHomeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
+            
         }
     }
 }
+
+

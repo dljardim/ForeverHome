@@ -772,9 +772,11 @@ struct DynamicLazyHGrid: View {
                 }
                 .padding(20)
             }
-        }
+        } // geometry
     }
 }
+
+
 
 
 #Preview{
@@ -782,5 +784,5 @@ struct DynamicLazyHGrid: View {
 //    ConvertToLazyHGridTwoRows()
 //    ConvertToLazyHGridTwoRowsSolution()
 //    ConvertToLazyHGridTwoRowsSolution_NoVerticalGap()
-    DynamicLazyHGrid()
+//    DynamicLazyHGridBreakDown()
 }
